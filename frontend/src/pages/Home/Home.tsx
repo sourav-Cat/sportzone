@@ -1,9 +1,15 @@
 
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Trophy, Activity, Newspaper } from 'lucide-react'
 import LiveMatchCard from '../../components/cricket/LiveMatchCard'
+import { testApi } from '../../api/testApi'
 
 function Home() {
+  useEffect(() => {
+    testApi()
+  }, [])
+
   return (
     <main className="min-h-screen bg-slate-950 text-white">
 

@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom'
-import { Trophy, Moon, Sun } from 'lucide-react'
+import { Trophy, Moon } from 'lucide-react'
 
 function Navbar() {
   return (
