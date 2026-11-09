@@ -1,8 +1,13 @@
 
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { Trophy, Moon } from 'lucide-react'
 
 function Navbar() {
+  const navClass = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? 'text-green-400'
+      : 'text-gray-300 hover:text-green-400 transition'
+
   return (
     <nav className="bg-slate-900 border-b border-slate-800 px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -14,12 +19,26 @@ function Navbar() {
           </span>
         </Link>
 
-        <div className="flex items-center gap-6 text-gray-300 font-medium">
-          <Link to="/" className="hover:text-green-400">Home</Link>
-          <Link to="/cricket" className="hover:text-green-400">Cricket</Link>
-          <Link to="/football" className="hover:text-green-400">Football</Link>
-          <Link to="/live-scores" className="hover:text-green-400">Live Scores</Link>
-          <Link to="/news" className="hover:text-green-400">News</Link>
+        <div className="flex items-center gap-6 font-medium">
+          <NavLink to="/" end className={navClass}>
+            Home
+          </NavLink>
+
+          <NavLink to="/cricket" className={navClass}>
+            Cricket
+          </NavLink>
+
+          <NavLink to="/football" className={navClass}>
+            Football
+          </NavLink>
+
+          <NavLink to="/live-scores" className={navClass}>
+            Live Scores
+          </NavLink>
+
+          <NavLink to="/news" className={navClass}>
+            News
+          </NavLink>
         </div>
 
         <button className="text-gray-300 hover:text-green-400">

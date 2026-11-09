@@ -1,15 +1,11 @@
 
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Trophy, Activity, Newspaper } from 'lucide-react'
-import LiveMatchCard from '../../components/cricket/LiveMatchCard'
-import { testApi } from '../../api/testApi'
+import NewsSection from '../../components/news/NewsSection'
+import CricketMatchCenter from '../../components/cricket/CricketMatchCenter.tsx'
+import FootballMatchCenter from '../../components/football/FootballMatchCenter.tsx'
 
 function Home() {
-  useEffect(() => {
-    testApi()
-  }, [])
-
   return (
     <main className="min-h-screen bg-slate-950 text-white">
 
@@ -59,58 +55,14 @@ function Home() {
         </div>
       </section>
 
-      {/* Live Cricket Matches */}
-      <section className="max-w-7xl mx-auto px-6 pb-20">
+      {/* Cricket Matches */}
+      <CricketMatchCenter limit={6}/>
 
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold">
-            Live Cricket <span className="text-green-400">Matches</span>
-          </h2>
+      {/* Football Matches */}
+      <FootballMatchCenter limit={6} />
 
-          <Link
-            to="/cricket"
-            className="text-green-400 hover:underline"
-          >
-            View All
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <LiveMatchCard
-            team1="Bangladesh"
-            team2="India"
-            score1="245/6"
-            score2="Yet to bat"
-            status="DEMO"
-            format="ODI"
-          />
-
-          <LiveMatchCard
-            team1="Australia"
-            team2="England"
-            score1="180/4"
-            score2="Yet to bat"
-            status="DEMO"
-            format="T20"
-          />
-
-          <LiveMatchCard
-            team1="Pakistan"
-            team2="Sri Lanka"
-            score1="120/3"
-            score2="Yet to bat"
-            status="DEMO"
-            format="TEST"
-          />
-
-        </div>
-
-        <p className="text-gray-500 text-xs mt-4">
-          Demo data only — Not real-time scores.
-        </p>
-
-      </section>
+      {/* Sports News */}
+      <NewsSection />
 
     </main>
   )
